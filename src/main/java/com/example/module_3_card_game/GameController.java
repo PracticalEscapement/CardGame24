@@ -21,6 +21,13 @@ public class GameController {
     @FXML
     private GridPane bottomMenu;
 
+    // method to verify the player input
+
+    // method to give a hint
+
+    // method to refresh
+
+    // start method to initialize the deck and cards called from the application
 
 
 
