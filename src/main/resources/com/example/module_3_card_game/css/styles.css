@@ -1,0 +1,17 @@
+/* Game Layout Styling */
+
+#mainContainer {
+    -fx-padding: 0;
+}
+
+#topMenu {
+    -fx-background-color: black;
+}
+
+#cardContainer {
+    -fx-background-color: red;
+}
+
+#bottomMenu {
+    -fx-background-color: green;
+}
