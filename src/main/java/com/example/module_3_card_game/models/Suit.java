@@ -12,6 +12,7 @@ public enum Suit {
         this.str = str;
     }
 
+    // Return the name of the suit so the image files can be read
     public String getStr() {
         return this.str;
     }
