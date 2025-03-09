@@ -14,7 +14,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.function.Consumer;
 
 public class GameController {
 
@@ -32,8 +34,11 @@ public class GameController {
     private GridPane bottomMenu;
 
     private static final String IMAGE_DIR = "src/main/resources/com/example/module_3_card_game/images/cards";
-    private static List<Card> deck = new ArrayList<>();
 
+    // Deck of all 52 cards
+    private static List<Card> deck = new ArrayList<>();
+    // List of the 4 cards in play
+    private static List<Card> cardsInPlay;
     // method to verify the player input
 
     // method to give a hint
@@ -41,10 +46,12 @@ public class GameController {
     // method to refresh
 
 
+    //TODO Should i put the helper methods for instantiating the deck in another class?
+
     // Method to create instance of card
     // Takes the image path
     // TODO figure out how to convert the image path into an image
-    public static Card createCard(Path filePath) {
+    private static Card createCard(Path filePath) {
         String fileName = filePath.getFileName().toString();
         fileName = fileName.replace(".png", "");
         // [0]=face [1]=suit
@@ -83,6 +90,17 @@ public class GameController {
         };
     }
 
+    // This will be activated if the game is started or the user chooses to refresh the cards
+    public static void drawCards() {
+        // cardsInPlay will be a sublist of the first 4 elements after the deck has been shuffled.
+        Collections.shuffle(deck);
+        cardsInPlay = deck.subList(0, 4);
+    }
+
+    public List<Card> getCardsInPlay() {
+        return cardsInPlay;
+    }
+
 
 
     // start method to initialize the deck and cards called from the application
@@ -90,16 +108,14 @@ public class GameController {
      to render the cards in play to the user */
     public static void startGame() {
         try {
+            // Use the name of the image file to create the card type
             Files.list(Paths.get(IMAGE_DIR)).filter(Files::isRegularFile)
-                .forEach(path -> {
-                    // Use the name of the image file to create the card type
-                    Card card = createCard(path);
-
-            });
+                .forEach(GameController::createCard);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
+        // Draw 4 cards from the deck to start the game by default
+        drawCards();
     }
 
 
