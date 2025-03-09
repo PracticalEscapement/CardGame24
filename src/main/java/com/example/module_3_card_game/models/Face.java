@@ -32,4 +32,13 @@ public enum Face {
         return this.str;
     }
 
+    public static Face checkStr(int value) {
+        for (Face face : Face.values()) {
+            if (face.getValue() == value) {
+                return face;
+            }
+        }
+        throw new IllegalArgumentException("Invalid Value!");
+    }
+
 }

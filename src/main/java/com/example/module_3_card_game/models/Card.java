@@ -10,12 +10,12 @@ public class Card {
     private Suit suit;
 
     @FXML
-    private Image image;
+    private String imagePath;
 
-    public Card(Face face, Suit suit, Image image) {
+    public Card(Face face, Suit suit, String imagePath) {
         this.face = face;
         this.suit = suit;
-        this.image = image;
+        this.imagePath = imagePath;
     }
 
     public int getValue() {

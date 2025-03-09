@@ -15,6 +15,9 @@ public class GameApplication extends Application {
         stage.setTitle("24 Game!");
         stage.setScene(scene);
         stage.show();
+        GameController gc = new GameController();
+        gc.startGame();
+
     }
 
     public static void main(String[] args) {
