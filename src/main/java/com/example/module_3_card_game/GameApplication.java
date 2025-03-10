@@ -15,7 +15,7 @@ public class GameApplication extends Application {
         stage.setTitle("24 Game!");
         stage.setScene(scene);
         stage.show();
-        GameController.startGame();
+
 
     }
 

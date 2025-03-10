@@ -12,7 +12,6 @@ public class Card {
     @FXML
     private String imagePath;
 
-    // Constructor used to make the original deck of cards. I don't want the original deck to be mutated.
     public Card(Face face, Suit suit, String imagePath) {
         this.face = face;
         this.suit = suit;
@@ -26,4 +25,9 @@ public class Card {
     public String getSuit() {
         return suit.getStr();
     }
+
+    public String getImagePath() {
+        return this.imagePath;
+    }
+
 }
